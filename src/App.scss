@@ -1,0 +1,10 @@
+.app{
+  width:100%;
+  min-height:100vh;
+  h1{
+    color: #333;
+    &:hover{
+      color: #666;
+    }
+  }
+}
