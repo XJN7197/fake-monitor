@@ -2,7 +2,7 @@ import './VideoPlayer.scss';
 import VideoChannel from './VideoChannel';
 import {Card} from 'antd';
 import VideoControls from './VideoControls';
-import { useRef, useState } from 'react';
+import { useRef } from 'react';
 
 const VideoPlayer=()=>{
     const channelCount=4;

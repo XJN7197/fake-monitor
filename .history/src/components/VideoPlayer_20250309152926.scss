@@ -4,31 +4,22 @@
   padding: 24px;
   background-color: #f0f2f5;
 
-  .video-controls{
-    margin-top: 16px;
-    padding: 0 16px;
-
-    .ant-slider{
-      margin: 0;
-    }
-  }
-
   .ant-card-body{
     height: calc(100vh - 48px);
-    padding: 0;
+    padding: 0 !important;
   }
 
   .video-container{
     width: 100%;
     height: 100%;
     display: grid;
-    gap:0;
+    gap:16px;
 
 
     // 多通道布局
     &.single-screen{
       grid-template-columns: 1fr;
-      grid-template-rows: 1fr;
+    grid-template-rows: 1fr;
     }
     &.double-screen{
       grid-template-columns: repeat(2, 1fr);
