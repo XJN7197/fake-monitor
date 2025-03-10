@@ -1,0 +1,41 @@
+.video-controls{
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 10px;
+
+    .ant-slider {
+        flex:1;
+        margin: 0;
+
+        // 进度条样式自定义
+        .ant-slider-rail {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        .ant-slider-track {
+            background-color: #1890ff;
+        }
+        .ant-slider-handle {
+            border-color: #1890ff;   
+            &:hover {
+                transform: scale(1.1);
+            }
+        }
+    }
+    .ant-btn{
+        min-width: 40px;
+        height: 40px;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        
+        &:hover {
+            transform: scale(1.05);
+        }
+
+        .anticon {
+            font-size: 20px;
+        }
+    }
+}

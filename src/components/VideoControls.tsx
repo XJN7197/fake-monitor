@@ -1,13 +1,18 @@
-import { Slider } from "antd";
+import { Slider, Button } from "antd";
 import { useEffect,useState } from "react";
+import { PauseOutlined, PlayCircleOutlined } from "@ant-design/icons";
+import "./VideoControls.scss";
 
 interface VideoControlsProps{
     duration:number;
     currentTime:number;
     onProgressChange:(value:number)=>void;
+    isPlaying:boolean;
+    onPlayPauseClick:()=>void;
 }
 
-const VideoControls=({duration,currentTime,onProgressChange}:VideoControlsProps)=>{
+const VideoControls=({duration,currentTime,onProgressChange, 
+    isPlaying, onPlayPauseClick}:VideoControlsProps)=>{
     const [progress,setProgress]=useState(0);
 
     useEffect(()=>{
@@ -26,7 +31,13 @@ const VideoControls=({duration,currentTime,onProgressChange}:VideoControlsProps)
                 onChange={handleProgressChange}
                 tooltip={ { formatter:value=>`${Math.round(value)}%`} }
             />
+            <Button
+                type="primary"
+                icon={isPlaying?<PauseOutlined />:<PlayCircleOutlined />}
+                onClick={onPlayPauseClick}
+            />
         </div>
+
     );
 };
 

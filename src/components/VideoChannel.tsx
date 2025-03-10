@@ -5,10 +5,21 @@ interface VideoChannelProps{
     channelId:number;
     onTimeUpdate?:(time:number)=>void;
     onDurationChange?:(duration:number)=>void;
+    isPlaying:boolean;  
 }
 
 const VideoChannel=forwardRef<HTMLVideoElement,VideoChannelProps>(
-    ({channelId,onTimeUpdate,onDurationChange},ref)=>{
+    ({channelId,onTimeUpdate,onDurationChange,isPlaying},ref)=>{
+        useEffect(()=>{
+            const videoElement=ref as React.MutableRefObject<HTMLVideoElement>;
+            if(videoElement.current){
+                if(isPlaying){
+                    videoElement.current.play();
+                }else{
+                    videoElement.current.pause();
+                }
+            }
+        },[isPlaying]);
         
         return(
             <div className="video-channel">

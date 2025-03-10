@@ -9,6 +9,19 @@ const VideoPlayer=()=>{
     const [duration,setDuration]=useState(0);
     const [currentTime,setCurrentTime]=useState(0);
     const videoRefs=useRef<HTMLVideoElement[]>([]);
+    const [isPlaying,setIsPlaying]=useState(false);
+
+    // 处理播放暂停
+    const handlePlayPauseClick=()=>{
+        setIsPlaying(!isPlaying);
+        console.log("播放状态："+isPlaying);
+        videoRefs.current.forEach(video=>{
+            if(video){
+                if(isPlaying) video.pause();
+                else video.play();
+            }
+        });
+    };
 
     // 自动同步视频进度
     const handleTimeUpdate=(time:number)=>{
@@ -54,6 +67,7 @@ const VideoPlayer=()=>{
                                 onTimeUpdate={index===0?handleTimeUpdate:undefined}
                                 onDurationChange={index===0?setDuration:undefined}
                                 ref={el=>videoRefs.current[index]=el}
+                                isPlaying={isPlaying}
                             />
                         </Card>
                     ))
@@ -63,6 +77,8 @@ const VideoPlayer=()=>{
                 duration={duration}
                 currentTime={currentTime}
                 onProgressChange={handleProgressChange}
+                isPlaying={isPlaying}
+                onPlayPauseClick={handlePlayPauseClick}
             />
         </Card>
     )
