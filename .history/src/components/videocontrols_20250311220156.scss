@@ -1,5 +1,7 @@
 :global {
     .time-popover {
+        position: absolute !important;
+        pointer-events: none;  // 防止气泡影响鼠标事件
         .ant-popover-inner {
             background-color: #1890ff !important;
             

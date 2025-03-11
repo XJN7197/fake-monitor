@@ -6,7 +6,6 @@ export interface TimePoint {
     id: number;
     name: string;
     timestamp: number;  // 视频时间点（秒）
-    
 }
 
 const FakeMonitor = () => {
@@ -22,10 +21,7 @@ const FakeMonitor = () => {
 
     return (
         <div className='fake-monitor'>
-            <VideoPlayer 
-            timePoints={mockTimePoints} 
-            startTime={mockStartTime}
-            />
+            <VideoPlayer timePoints={mockTimePoints} />
         </div>
     )
 }

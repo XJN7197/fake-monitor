@@ -65,6 +65,10 @@ const VideoControls = ({
                 mouseLeaveDelay={0} 
                 overlayClassName="time-popover"
                 destroyTooltipOnHide 
+                align={{
+                    points: ['bc', 'tc'], // bottom-center to top-center
+                    offset: [0, -4],      // 微调垂直偏移
+                }}
             >
                 <div                     
                     style={{ width: '100%' }}

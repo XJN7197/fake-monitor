@@ -1,22 +1,21 @@
 :global {
-    .time-popover {
+    .ant-popover {
         .ant-popover-inner {
-            background-color: #1890ff !important;
+            background-color: #1890ff;
             
             .ant-popover-inner-content {
-                color: white !important;
+                color: white;
                 padding: 4px 8px;
-                font-size: 12px;
             }
         }
-        
         .ant-popover-arrow {
             &::before {
-                background-color: #1890ff !important;
+                background-color: #1890ff;
             }
         }
     }
 }
+
 .video-controls{
     display: flex;
     align-items: center;

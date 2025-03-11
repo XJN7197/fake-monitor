@@ -10,7 +10,7 @@ interface VideoPlayerProps {
     startTime: Date;
 }
 
-const VideoPlayer = ({ timePoints,startTime }: VideoPlayerProps) => {
+const VideoPlayer = ({ timePoints }: VideoPlayerProps) => {
     const channelCount=4;
     const [duration,setDuration]=useState(0);
     const [currentTime,setCurrentTime]=useState(0);
@@ -87,7 +87,6 @@ const VideoPlayer = ({ timePoints,startTime }: VideoPlayerProps) => {
                 onPlayPauseClick={handlePlayPauseClick}
                 timePoints={timePoints}
                 onTimePointClick={handleTimePointClick}
-                startTime={startTime}
             />
         </Card>
     )

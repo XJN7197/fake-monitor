@@ -21,8 +21,6 @@ const VideoControls = ({
     onTimePointClick, startTime
 }: VideoControlsProps) => {
     const [progress,setProgress]=useState(0);
-    const [hoverProgress, setHoverProgress] = useState(0);
-    const [showPopover, setShowPopover] = useState(false);
 
     useEffect(()=>{
         setProgress((currentTime/duration)*100);
@@ -58,30 +56,18 @@ const VideoControls = ({
     return (
         <div className="video-controls">
             <Popover
-                content={sliderPopoverContent(hoverProgress)}
-                open={showPopover} 
+                content={sliderPopoverContent(progress)}
                 trigger="hover"
                 mouseEnterDelay={0} 
                 mouseLeaveDelay={0} 
                 overlayClassName="time-popover"
                 destroyTooltipOnHide 
             >
-                <div                     
-                    style={{ width: '100%' }}
-                    onMouseMove={(e) => {
-                        const rect = e.currentTarget.getBoundingClientRect();
-                        const percentage = ((e.clientX - rect.left) / rect.width) * 100;
-                        setHoverProgress(Math.min(Math.max(percentage, 0), 100));
-                    }}
-                    onMouseEnter={() => setShowPopover(true)}
-                    onMouseLeave={() => setShowPopover(false)}
-                >
-                    <Slider
-                        value={progress}
-                        onChange={handleProgressChange}
-                        tooltip={{ formatter: null }} 
-                    />
-                </div>
+                <Slider
+                    value={progress}
+                    onChange={handleProgressChange}
+                    tooltip={{ formatter: null }} 
+                />
             </Popover>
             <Space className="control-buttons">
                 <Button

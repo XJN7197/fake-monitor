@@ -1,22 +1,19 @@
-:global {
-    .time-popover {
-        .ant-popover-inner {
-            background-color: #1890ff !important;
-            
-            .ant-popover-inner-content {
-                color: white !important;
-                padding: 4px 8px;
-                font-size: 12px;
-            }
-        }
+.ant-popover {
+    .ant-popover-inner {
+        background-color: #1890ff !important;
         
-        .ant-popover-arrow {
-            &::before {
-                background-color: #1890ff !important;
-            }
+        .ant-popover-inner-content {
+            color: white !important;
+            padding: 4px 8px;
+        }
+    }
+    .ant-popover-arrow {
+        &::before {
+            background-color: #1890ff !important;
         }
     }
 }
+
 .video-controls{
     display: flex;
     align-items: center;
