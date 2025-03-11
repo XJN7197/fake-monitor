@@ -5,20 +5,12 @@ import VideoControls from './VideoControls';
 import { useRef, useState } from 'react';
 import { TimePoint } from '../pages/FakeMonitor';
 
-interface VideoPlayerProps {
-    timePoints: TimePoint[];
-}
-
-const VideoPlayer = ({ timePoints }: VideoPlayerProps) => {
+const VideoPlayer=()=>{
     const channelCount=4;
     const [duration,setDuration]=useState(0);
     const [currentTime,setCurrentTime]=useState(0);
     const videoRefs=useRef<HTMLVideoElement[]>([]);
     const [isPlaying,setIsPlaying]=useState(false);
-
-    const handleTimePointClick = (timestamp: number) => {
-        handleProgressChange(timestamp);
-    };
 
     // 处理播放暂停
     const handlePlayPauseClick=()=>{

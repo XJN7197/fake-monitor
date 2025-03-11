@@ -17,8 +17,6 @@ const FakeMonitor = () => {
         { id: 4, name: '车辆出站', timestamp: 60 }
     ];
 
-    
-
     return (
         <div className='fake-monitor'>
             <VideoPlayer timePoints={mockTimePoints} />

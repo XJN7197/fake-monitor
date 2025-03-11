@@ -2,15 +2,11 @@
   width: 100%;
   height: 100vh;
   padding: 0;
-  background-color: #cfd0d1;
-  position: relative;
-  display: flex;
-  flex-direction: column;
+  background-color: #141517;
 
   .video-controls{
-    padding: 16px;
-    background: rgba(228, 224, 224, 0.5);
-    flex-shrink: 0; 
+    margin-top: 16px;
+    padding: 0 16px;
 
     .ant-slider{
       margin: 0;
@@ -18,9 +14,8 @@
   }
 
   .ant-card-body{
-    flex: 1; // 让视频区域占据剩余空间
+    height: calc(100vh - 48px);
     padding: 0;
-    min-height: 0; // 解决 flex 布局下的溢出问题
   }
 
   .video-container{
