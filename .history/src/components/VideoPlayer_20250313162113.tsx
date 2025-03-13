@@ -2,7 +2,7 @@ import './VideoPlayer.scss';
 import VideoChannel from './VideoChannel';
 import {Card} from 'antd';
 import VideoControls from './VideoControls';
-import { act, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import { TimePoint } from '../pages/FakeMonitor';
 
 interface VideoPlayerProps {
@@ -15,22 +15,11 @@ const VideoPlayer = ({ timePoints,startTime }: VideoPlayerProps) => {
     const [duration,setDuration]=useState(0);
     const [currentTime,setCurrentTime]=useState(0);
     const videoRefs=useRef<HTMLVideoElement[]>([]);
-    const [isPlaying,setIsPlaying]=useState(false);
-    const [activeChannels,setActiveChannels]=useState<boolean[]>(Array(channelCount).fill(true));
+    const [isPlaying,setIsPlaying]=useState(true);
 
     const handleTimePointClick = (timestamp: number) => {
         handleProgressChange(timestamp);
     };
-
-    // 点击开闭视频通道
-    const handleClickChannel=(index:number)=>{
-        if(activeChannels[index] && activeChannels.filter(active=>active).length===1) return;
-        const newActiveChannels=[...activeChannels];
-        newActiveChannels[index]=!newActiveChannels[index];
-        console.log("通道状态："+newActiveChannels);
-        setActiveChannels(newActiveChannels);
-    };
-
 
     // 处理播放暂停
     const handlePlayPauseClick=()=>{
@@ -64,9 +53,7 @@ const VideoPlayer = ({ timePoints,startTime }: VideoPlayerProps) => {
 
     // 计算视频布局
     const getLayoutClassName=(count:number)=>{
-        const activeCount = activeChannels.filter(active => active).length;
-        switch(activeCount){
-            case 0: return 'quad-screen'; // 保持默认布局
+        switch(count){
             case 1: return 'single-screen';
             case 2: return 'double-screen';
             case 3:
@@ -79,11 +66,8 @@ const VideoPlayer = ({ timePoints,startTime }: VideoPlayerProps) => {
         <Card className='video-player'>
             <div className={`video-container ${getLayoutClassName(channelCount)}`}>
                 {
-                    Array.from({length:channelCount}).map((_,index)=> activeChannels[index] && (
-                        <Card key={index} 
-                        className={'video-item' + (!activeChannels[index] ? ' hidden' : '')}
-                            onClick={()=>handleClickChannel(index)}
-                        >
+                    Array.from({length:channelCount}).map((_,index)=>(
+                        <Card key={index} className='video-item'>
                             <VideoChannel 
                                 channelId={index+1}
                                 onTimeUpdate={index===0?handleTimeUpdate:undefined}

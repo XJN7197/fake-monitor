@@ -24,7 +24,6 @@ const VideoPlayer = ({ timePoints,startTime }: VideoPlayerProps) => {
 
     // 点击开闭视频通道
     const handleClickChannel=(index:number)=>{
-        if(activeChannels[index] && activeChannels.filter(active=>active).length===1) return;
         const newActiveChannels=[...activeChannels];
         newActiveChannels[index]=!newActiveChannels[index];
         console.log("通道状态："+newActiveChannels);
@@ -81,7 +80,7 @@ const VideoPlayer = ({ timePoints,startTime }: VideoPlayerProps) => {
                 {
                     Array.from({length:channelCount}).map((_,index)=> activeChannels[index] && (
                         <Card key={index} 
-                        className={'video-item' + (!activeChannels[index] ? ' hidden' : '')}
+                            className={'video-item'}
                             onClick={()=>handleClickChannel(index)}
                         >
                             <VideoChannel 

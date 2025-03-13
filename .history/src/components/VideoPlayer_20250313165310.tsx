@@ -81,7 +81,7 @@ const VideoPlayer = ({ timePoints,startTime }: VideoPlayerProps) => {
                 {
                     Array.from({length:channelCount}).map((_,index)=> activeChannels[index] && (
                         <Card key={index} 
-                        className={'video-item' + (!activeChannels[index] ? ' hidden' : '')}
+                            className={'video-item'}
                             onClick={()=>handleClickChannel(index)}
                         >
                             <VideoChannel 

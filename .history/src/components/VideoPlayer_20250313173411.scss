@@ -50,16 +50,12 @@
 
     .video-item{
       height: 327px;
-      aspect-ratio: 4/3; 
+      aspect-ratio: 4/3; // 设置宽高比为16:9，或根据你的视频实际比例调整
       background: #141414;
       border: none;
       overflow: hidden;
       position: relative;
 
-      &.hidden {
-        visibility: hidden;
-      }
-      
       &:hover {
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
       }

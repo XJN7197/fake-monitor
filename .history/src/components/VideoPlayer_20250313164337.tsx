@@ -24,7 +24,6 @@ const VideoPlayer = ({ timePoints,startTime }: VideoPlayerProps) => {
 
     // 点击开闭视频通道
     const handleClickChannel=(index:number)=>{
-        if(activeChannels[index] && activeChannels.filter(active=>active).length===1) return;
         const newActiveChannels=[...activeChannels];
         newActiveChannels[index]=!newActiveChannels[index];
         console.log("通道状态："+newActiveChannels);
@@ -64,8 +63,7 @@ const VideoPlayer = ({ timePoints,startTime }: VideoPlayerProps) => {
 
     // 计算视频布局
     const getLayoutClassName=(count:number)=>{
-        const activeCount = activeChannels.filter(active => active).length;
-        switch(activeCount){
+        switch(count){
             case 0: return 'quad-screen'; // 保持默认布局
             case 1: return 'single-screen';
             case 2: return 'double-screen';
@@ -79,10 +77,10 @@ const VideoPlayer = ({ timePoints,startTime }: VideoPlayerProps) => {
         <Card className='video-player'>
             <div className={`video-container ${getLayoutClassName(channelCount)}`}>
                 {
-                    Array.from({length:channelCount}).map((_,index)=> activeChannels[index] && (
+                    Array.from({length:channelCount}).map((_,index)=>(
                         <Card key={index} 
-                        className={'video-item' + (!activeChannels[index] ? ' hidden' : '')}
-                            onClick={()=>handleClickChannel(index)}
+                        className={`video-item ${!activeChannels[index] ? 'hidden' : ''}`}
+                        onClick={()=>handleClickChannel(index)}
                         >
                             <VideoChannel 
                                 channelId={index+1}
